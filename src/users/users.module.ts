@@ -10,7 +10,6 @@ import { DocumentUserPersistenceModule } from './infrastructure/persistence/docu
 import { RelationalUserPersistenceModule } from './infrastructure/persistence/relational/relational-persistence.module';
 import { DatabaseConfig } from '../database/config/database-config.type';
 import databaseConfig from '../database/config/database.config';
-import { FilesModule } from '../files/files.module';
 
 // <database-block>
 const infrastructurePersistenceModule = (databaseConfig() as DatabaseConfig)
@@ -23,7 +22,6 @@ const infrastructurePersistenceModule = (databaseConfig() as DatabaseConfig)
   imports: [
     // import modules, etc.
     infrastructurePersistenceModule,
-    FilesModule,
   ],
   controllers: [UsersController],
   providers: [UsersService],

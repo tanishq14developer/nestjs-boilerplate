@@ -77,23 +77,6 @@ export class UsersDocumentRepository implements UserRepository {
     return userObject ? UserMapper.toDomain(userObject) : null;
   }
 
-  async findBySocialIdAndProvider({
-    socialId,
-    provider,
-  }: {
-    socialId: User['socialId'];
-    provider: User['provider'];
-  }): Promise<NullableType<User>> {
-    if (!socialId || !provider) return null;
-
-    const userObject = await this.usersModel.findOne({
-      socialId,
-      provider,
-    });
-
-    return userObject ? UserMapper.toDomain(userObject) : null;
-  }
-
   async update(id: User['id'], payload: Partial<User>): Promise<User | null> {
     const clonedPayload = { ...payload };
     delete clonedPayload.id;
